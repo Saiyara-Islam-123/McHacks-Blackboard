@@ -1,23 +1,16 @@
 import { useState, useEffect} from 'react'
 import './App.css'
+import axios from 'axios';
 
 function App() {
-  const [_data, setData] = useState([{}]);
+  const fetchAPI =async() => {
+  
+  const _response = await axios.get("http://localhost:5000/meow");
+  console.log(_response)
 
+  };
 
-  useEffect(() => {
-
-    fetch("http://127.0.0.1:5000/meow").then(
-      res => res.json()
-    ).then(
-      _data => {
-        setData(_data)
-        console.log(_data)
-
-      }
-    )
-
-  }, []) 
+  useEffect(() => {fetchAPI()}, [])
 
   return (
       <div></div>
