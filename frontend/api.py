@@ -4,7 +4,7 @@ from flask_cors import CORS
 app = Flask (__name__)
 cors = CORS(app)
 
-@app.route("/meow")
+@app.route("/")
 def home():
     return {"Dogs": "Bark" }
 
