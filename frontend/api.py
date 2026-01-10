@@ -8,5 +8,9 @@ CORS(app)
 def home():
     return {"Cats": "Meow" }
 
+@app.route("/")
+def main_page():
+    render_template("index.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
