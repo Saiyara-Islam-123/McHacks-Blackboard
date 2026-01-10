@@ -17,7 +17,7 @@ function App() {
       }
     )
 
-  }, [_data]) 
+  }, []) 
 
   return (
       <div></div>
