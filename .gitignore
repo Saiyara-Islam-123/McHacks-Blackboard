@@ -24,6 +24,4 @@ dist-ssr
 *.sw?
 
 api.txt
-.venv
-venv
-.venv/Scripts/python.exe
+*venv
