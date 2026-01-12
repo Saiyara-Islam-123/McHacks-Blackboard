@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
 
-    fetch("http://127.0.0.1:5000/meow").then(
+    fetch("http://127.0.0.1:5000/").then(
       res => res.json()
     ).then(
       _data => {
@@ -20,7 +20,7 @@ function App() {
       }
     )
 
-  }, [_data]) 
+  }, []) 
 
   return (
   	<BrowserRouter>

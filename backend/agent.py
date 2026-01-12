@@ -1,6 +1,8 @@
 import requests
+import os
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
-f = open("api.txt")
+f = open(f"{dir_path}/api.txt")
 
 API_KEY = (f.read())
 BASE_URL = "https://app.backboard.io/api"
