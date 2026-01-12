@@ -17,8 +17,8 @@ export default function Task({ task, onNext, onPrevious }) { // fix later sorry
                 <div className="space-y-3">
                     {task.steps.map((step, i) => (
                         <div key={step.id} className={`flex items-center gap-3 border rounded-lg p-4 ${i === task.currentIndex ? "border-purple-500 bg-purple-50" : "border-gray-200"}`}>
-                            <input type="checkbox" checked={i <= task.currentIndex}className="peer" />
-                            <label className="peer-checked:line-through peer-checked:text-gray-500">{step.text}</label>
+                            <input type="checkbox" checked={i <= task.currentIndex} className="peer" />
+                            <label className="peer-checked:line-through peer-checked:text-gray-500 text-purple-500 font-semibold">{step.text}</label>
                         </div>
                     ))}
                 </div>
