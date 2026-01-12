@@ -1,4 +1,6 @@
-export default function Task({ task, onNext, onPrevious }) { // fix later sorry
+import type { Task } from '../types.ts';
+
+export default function Task({ task, onNext, onPrevious } : {task: Task, onNext: () => void, onPrevious: () => void}) {
 	const progress = Math.round(((task.currentIndex+1)/task.steps.length)*100);
 
 	return (
