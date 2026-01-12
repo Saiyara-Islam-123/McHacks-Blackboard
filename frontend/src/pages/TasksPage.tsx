@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Task from "./Task.tsx";
-
+// need to mark steps as completed/not completed when completed/ not completed
 export default function TasksPage() {
 	const navigate = useNavigate();
 	const taskList = [
@@ -10,11 +10,11 @@ export default function TasksPage() {
 			title: "help me!!",
 			currentIndex: -1,
 			steps: [
-				{ id: "1", text: "Meow" },
-				{ id: "2", text: "meow" },
-				{ id: "3", text: "meow" },
-				{ id: "4", text: "meow" },
-				{ id: "5", text: "meow" },
+				{ id: "1", text: "Meow", completed: false },
+				{ id: "2", text: "meow", completed: false },
+				{ id: "3", text: "meow", completed: false },
+				{ id: "4", text: "meow", completed: false },
+				{ id: "5", text: "meow", completed: false },
 			]
 		},
 
@@ -23,11 +23,11 @@ export default function TasksPage() {
             title: "help me!!",
 			currentIndex: -1,
             steps: [
-                { id: "1", text: "Meow" },
-                { id: "2", text: "meow" },
-                { id: "3", text: "meow" },
-                { id: "4", text: "meow" },
-                { id: "5", text: "meow" },
+                { id: "1", text: "Meow", completed: false },
+                { id: "2", text: "meow", completed: false },
+                { id: "3", text: "meow", completed: false },
+                { id: "4", text: "meow", completed: false },
+                { id: "5", text: "meow", completed: false },
             ]   
 		},
 
@@ -36,11 +36,11 @@ export default function TasksPage() {
             title: "help me!!",
 			currentIndex: -1,
             steps: [
-                { id: "1", text: "Meow" },
-                { id: "2", text: "meow" },
-                { id: "3", text: "meow" },
-                { id: "4", text: "meow" },
-                { id: "5", text: "meow" },
+                { id: "1", text: "Meow", completed: false },
+                { id: "2", text: "meow", completed: false },
+                { id: "3", text: "meow", completed: false },
+                { id: "4", text: "meow", completed: false },
+                { id: "5", text: "meow", completed: false },
             ]   
 		},
 
@@ -49,17 +49,17 @@ export default function TasksPage() {
             title: "help me!!",
 			currentIndex: -1,
             steps: [
-                { id: "1", text: "Meow" },
-                { id: "2", text: "meow" },
-                { id: "3", text: "meow" },
-                { id: "4", text: "meow" },
-                { id: "5", text: "meow" },
+                { id: "1", text: "Meow", completed: false },
+                { id: "2", text: "meow", completed: false },
+                { id: "3", text: "meow", completed: false },
+                { id: "4", text: "meow", completed: false },
+                { id: "5", text: "meow", completed: false },
             ]   
 		},
 	];
 	const [tasks, setTasks] = useState(taskList);
 
-	function updateStep(taskId, direction) {  // should this be a const? everyone online uses const
+	function updateStep(taskId: string, direction: number) {  // should this be a const? everyone online uses const
 		setTasks(tasks => tasks.map(t => {
 			if (t.id !== taskId) return t;
 			let newIndex = t.currentIndex+direction;
