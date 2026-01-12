@@ -1,5 +1,7 @@
-import { useState, useEffect} from 'react'
-import './App.css'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import ChatPage from "./pages/ChatPage";
+import TasksPage from "./pages/TasksPage";
 
 function App() {
   const [_data, setData] = useState([{}]);
@@ -20,7 +22,13 @@ function App() {
   }, [_data]) 
 
   return (
-      <div></div>
+  	<BrowserRouter>
+		<Routes>
+			<Route path="/" element={<ChatPage />} />
+			<Route path="/chat" element={<ChatPage />} />
+			<Route path="/tasks" element={<TasksPage />} />
+		</Routes>
+	</BrowserRouter>
 
   )
 }
