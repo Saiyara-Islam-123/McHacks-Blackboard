@@ -44,9 +44,8 @@ def get_assistants():
 )
 
 if __name__ == "__main__":
-    #agent_id = create_agent(name="bot", description="mental health chatbot to help divide tasks into smaller units")
-    #thread_id = thread(agent_id)
-    #print(response(thread_id, content="Give me easy steps on how to prepare a cesar salad for someone with OCD"))
-
-    print(get_assistants())
-
+    agent_id = create_agent(name="bot", description="mental health chatbot to help divide tasks into smaller units")
+    print("agent id: "+agent_id)
+    thread_id = thread(agent_id)
+    print("thread id: "+thread_id)
+    print(response(thread_id, content="Give me easy steps on how to prepare a cesar salad for someone with OCD"))

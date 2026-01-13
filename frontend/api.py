@@ -14,16 +14,19 @@ def clean_string_pre_query(string):
     return str_output
 
 app = Flask (__name__)
-cors = CORS(app)
+CORS(
+    app,
+)
 
 @app.route("/", methods = ["GET"])
 def get_response():
-    return get_all_responses("Food").tail(1).to_json(orient="records")
+    return get_all_responses("db839f92-dac3-457f-ae6c-11e7fb7d653c").tail(1).to_json(orient="records")
 
-@app.route("/", methods = ["POST"])
+@app.route("/post", methods = ["POST"])
 def give_input():
-    user_input = request.form['input']
-    res = response(thread_id="Food", content=user_input)
+    user_input = request.get_json()
+    print("!RESPONSE!!!!!!!!!!!"+user_input)
+    res = response(thread_id="db839f92-dac3-457f-ae6c-11e7fb7d653c", content=user_input)
     add_thread_and_response(thread_id="Food", response=res)
     return res
 

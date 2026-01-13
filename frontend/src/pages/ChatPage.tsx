@@ -16,10 +16,21 @@ export default function ChatPage() {
 	const [input, setInput] = useState("");
 	const [_data, setData] = useState("");
 
-	function addMessage() {
+	function addMessage(e) {
+		e.preventDefault()
 		if (!input.trim()) return;	
 		setMessages(prev => [...prev, {id: "69", role: "user", content: input,}]);
 		setInput("");
+		const r = fetch("http://127.0.0.1:5000/post", {
+		method: "POST",
+		headers: {
+		'Content-Type' : 'application/json'
+		},
+		body: JSON.stringify(input)
+		})
+
+	
+		console.log(input);
 	}
 
 	function addMessagebot() {
@@ -61,8 +72,10 @@ export default function ChatPage() {
 				<div ref={messagesEndRef} />
 
 				<div className="flex mt-auto w-full max-w-3xl space-x-2">
+					<form>
 					<input className="flex-1 border rounded-lg px-4 py-3 bg-gray-100 text-gray-500" placeholder="Type your message or task..." value={input} onChange={e => setInput(e.target.value)} />
-					<button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 rounded-lg" onClick={addMessage }>Enter</button>
+					<button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 rounded-lg" onClick={ (e) => addMessage(e) }>Enter</button>
+					</form>
 				</div>
 			</div>
 			

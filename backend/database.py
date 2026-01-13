@@ -48,5 +48,6 @@ def get_all_responses(thread_id):
 #I assume the latest response is always at the bottom of the dataframe. just do df.tail(1)
 
 if __name__ == "__main__":
-    
-    print(get_all_responses(thread_id="hello"))
+    add_agent_and_thread(thread_id="db839f92-dac3-457f-ae6c-11e7fb7d653c", agent_id="e7fbac9b-fa5e-46f2-8c2a-3eb1e895daec")
+    add_thread_and_response(thread_id="db839f92-dac3-457f-ae6c-11e7fb7d653c", response="Preparing a Caesar salad for someone with OC")
+    #print(get_all_responses(thread_id="hello"))
