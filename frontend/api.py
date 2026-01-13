@@ -18,7 +18,7 @@ cors = CORS(app)
 
 @app.route("/", methods = ["GET"])
 def get_agents():
-    return get_all_threads("bot").to_json(orient="records")
+    return get_all_responses("Food").tail(1).to_json(orient="records")
 
 
 if __name__ == '__main__':
