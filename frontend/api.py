@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, request
 from flask_cors import CORS
 import sys
 import os
@@ -21,7 +21,8 @@ def get_response():
     return get_all_responses("Food").tail(1).to_json(orient="records")
 
 @app.route("/", methods = ["POST"])
-def give_input(user_input):
+def give_input():
+    user_input = request.form['input']
     res = response(thread_id="Food", content=user_input)
     add_thread_and_response(thread_id="Food", response=res)
     return res
