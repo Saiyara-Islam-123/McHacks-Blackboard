@@ -17,8 +17,15 @@ app = Flask (__name__)
 cors = CORS(app)
 
 @app.route("/", methods = ["GET"])
-def get_agents():
+def get_response():
     return get_all_responses("Food").tail(1).to_json(orient="records")
+
+@app.route("/", methods = ["POST"])
+def give_input(user_input):
+    res = response(thread_id="Food", content=user_input)
+    add_thread_and_response(thread_id="Food", response=res)
+    return res
+
 
 
 if __name__ == '__main__':
