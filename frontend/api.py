@@ -28,7 +28,7 @@ def give_input():
     print("!RESPONSE!!!!!!!!!!!"+user_input)
     #res = response(thread_id="db839f92-dac3-457f-ae6c-11e7fb7d653c", content=user_input)
     res = "DEFAULT RESPONSE FOR DEBUGGING"
-    add_thread_and_response(thread_id="Food", response=res)
+    add_thread_and_response(thread_id="db839f92-dac3-457f-ae6c-11e7fb7d653c", response=res)
     return res
 
 
