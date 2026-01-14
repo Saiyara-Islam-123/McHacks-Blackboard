@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import UserChatBubble from "./UserChatBubble.tsx";
 import BotChatBubble from "./BotChatBubble.tsx";
@@ -14,7 +14,7 @@ export default function ChatPage() {
 	]
 	const [messages, setMessages] = useState<Message[]>(messageList);
 	const [input, setInput] = useState("");
-	const [_data, setData] = useState("");
+	const [_data, setData] = useState([0]);
 
 	function addMessage(e) {
 		e.preventDefault()
@@ -30,30 +30,48 @@ export default function ChatPage() {
 		})
 
 	
-		console.log(input);
+		addMessagebot()
+		
+
 	}
 
 	function addMessagebot() {
 
-		const get_latest_response = async () => {
-			fetch("http://127.0.0.1:5000/").then(
+		const get_latest_response = () => { 
+			fetch("http://127.0.0.1:5000").then(
 			res => res.json()
 			).then(
 			_data => {
 				setData(_data)
-				console.log(_data)
+				
 			}
 			)
 
 		}
 		
-		setMessages(prev => [...prev, {id: "70", role: "bot", content: _data,}]);
+		setMessages(prev => [...prev, {id: "900", role: "bot", content: _data[1],}]);
+		console.log(messages)
 	}
 
 
 	useEffect(() => {
 		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
 	},[messages]);
+
+	useEffect(() => {
+
+		fetch("http://127.0.0.1:5000").then(
+			res => res.json()
+			).then(
+			_data => {
+				setData(_data)
+				
+			}
+			)
+			console.log(_data[1])
+
+
+	}, [messages]);
 
 	return (
 		<div className="min-h-screen min-w-screen flex flex-col items-center bg-gradient-to-b from-purple-50 to-white px-4">

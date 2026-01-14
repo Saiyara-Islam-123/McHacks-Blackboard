@@ -7,7 +7,7 @@ sys.path.append(os.path.dirname(SCRIPT_DIR))
 import re
 
 from backend.database import *
-from backend.agent import *
+#from backend.agent import *
 
 def clean_string_pre_query(string):
     str_output = re.sub(r"'", "’", string)
@@ -20,12 +20,14 @@ CORS(
 
 @app.route("/", methods = ["GET"])
 def get_response():
-    return get_all_responses("db839f92-dac3-457f-ae6c-11e7fb7d653c").tail(1).to_json(orient="records")
+    message =  get_all_responses("db839f92-dac3-457f-ae6c-11e7fb7d653c").iloc[-1].to_json(orient="records")
+    print("!FROM FLASK TO REACT! "+message)
+    return message
 
 @app.route("/post", methods = ["POST"])
 def give_input():
     user_input = request.get_json()
-    print("!RESPONSE!!!!!!!!!!!"+user_input)
+    print("!FROM REACT TO FLASK! "+user_input)
     #res = response(thread_id="db839f92-dac3-457f-ae6c-11e7fb7d653c", content=user_input)
     res = "DEFAULT RESPONSE FOR DEBUGGING"
     add_thread_and_response(thread_id="db839f92-dac3-457f-ae6c-11e7fb7d653c", response=res)

@@ -5,19 +5,7 @@ import ChatPage from "./pages/ChatPage";
 import TasksPage from "./pages/TasksPage";
 
 function App() {
-  const [_data, setData] = useState("");
-  const get_latest_response = async () => {
-			fetch("http://127.0.0.1:5000/").then(
-			res => res.json()
-			).then(
-			_data => {
-				setData(_data)
-				console.log(_data)
-			}
-			)
-    }
 
-  useEffect(() => {get_latest_response()}, [])
   
   return (
   	<BrowserRouter>

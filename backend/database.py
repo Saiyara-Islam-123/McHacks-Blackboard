@@ -1,6 +1,7 @@
 import pandas as pd
 import duckdb
 import os
+import re
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -24,6 +25,7 @@ def add_agent_and_thread(thread_id, agent_id):
 def add_thread_and_response(thread_id, response):
     conn = duckdb.connect(f"{dir_path}/data/threads.db")
     cur = conn.cursor()
+    response = re.sub(r"'", "’", response)
     cur.execute(f"INSERT INTO thread (thread_id, response) VALUES ('{thread_id}', '{response}')")
     conn.commit()
     cur.close()
